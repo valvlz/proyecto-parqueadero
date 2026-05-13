@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <windows.h>
 
 #include "ServidorSocket.h"
 #include "GeneradorPlacas.h"
@@ -17,12 +18,6 @@ int main()
     /* Crear generador */
     GeneradorPlacas generador;
 
-    /* Generar mensaje */
-    string mensaje = generador.generarMensaje();
-
-    cout << "Mensaje generado: "
-         << mensaje << endl;
-
     /* Crear servidor */
     ServidorSocket servidor(8080);
 
@@ -32,8 +27,21 @@ int main()
     /* Esperar cliente */
     servidor.esperarCliente();
 
-    /* Enviar mensaje */
-    servidor.enviarMensaje(mensaje.c_str());
+    /* Envío continuo */
+    while (true)
+    {
+        /* Generar mensaje */
+        string mensaje = generador.generarMensaje();
+
+        cout << "Mensaje generado: "
+             << mensaje << endl;
+
+        /* Enviar mensaje */
+        servidor.enviarMensaje(mensaje.c_str());
+
+        /* Esperar 5 segundos */
+        Sleep(5000);
+    }
 
     return 0;
 }
