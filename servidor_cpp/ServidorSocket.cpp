@@ -18,10 +18,13 @@ void ServidorSocket::iniciarServidor()
 {
     WSADATA wsa;
 
+    /* Información de dirección */
+    sockaddr_in servidor;
+
     /* Inicializar WinSock */
     WSAStartup(MAKEWORD(2,2), &wsa);
 
-    /* Crear socket */
+    /* Crear socket TCP */
     servidor_fd = socket(AF_INET, SOCK_STREAM, 0);
 
     /* Validar socket */
@@ -32,4 +35,20 @@ void ServidorSocket::iniciarServidor()
     }
 
     cout << "Socket creado correctamente" << endl;
+
+    /* Configurar dirección */
+    servidor.sin_family = AF_INET;
+    servidor.sin_addr.s_addr = INADDR_ANY;
+    servidor.sin_port = htons(puerto);
+
+    /* Asociar socket al puerto */
+    if (bind(servidor_fd,
+             (struct sockaddr*)&servidor,
+             sizeof(servidor)) < 0)
+    {
+        cout << "Error en bind" << endl;
+        return;
+    }
+
+    cout << "Puerto asociado correctamente" << endl;
 }
