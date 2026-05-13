@@ -17,11 +17,11 @@ int main()
     /* Crear generador */
     GeneradorPlacas generador;
 
-    /* Generar placa */
-    string placa = generador.generarPlaca();
+    /* Generar mensaje */
+    string mensaje = generador.generarMensaje();
 
-    cout << "Placa generada: "
-         << placa << endl;
+    cout << "Mensaje generado: "
+         << mensaje << endl;
 
     /* Crear servidor */
     ServidorSocket servidor(8080);
@@ -32,8 +32,8 @@ int main()
     /* Esperar cliente */
     servidor.esperarCliente();
 
-    /* Enviar placa */
-    servidor.enviarMensaje(placa.c_str());
+    /* Enviar mensaje */
+    servidor.enviarMensaje(mensaje.c_str());
 
     return 0;
 }

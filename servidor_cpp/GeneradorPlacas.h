@@ -7,7 +7,7 @@ using namespace std;
 
 /*
     Clase encargada de generar
-    placas aleatorias.
+    información del parqueadero.
 */
 class GeneradorPlacas
 {
@@ -15,6 +15,15 @@ class GeneradorPlacas
 
         /* Genera una placa */
         string generarPlaca();
+
+        /* Obtiene hora actual */
+        string obtenerHora();
+
+        /* Genera celda */
+        int generarCelda();
+
+        /* Genera mensaje completo */
+        string generarMensaje();
 };
 
 #endif
