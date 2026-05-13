@@ -1,9 +1,11 @@
 #ifndef SERVIDOR_SOCKET_H
 #define SERVIDOR_SOCKET_H
 
+#include <winsock2.h>
+
 /*
-    Clase encargada de iniciar
-    el servidor del socket.
+    Clase encargada de administrar
+    el servidor socket.
 */
 class ServidorSocket
 {
@@ -11,6 +13,9 @@ class ServidorSocket
 
         /* Puerto del servidor */
         int puerto;
+
+        /* Socket principal */
+        SOCKET servidor_fd;
 
     public:
 
