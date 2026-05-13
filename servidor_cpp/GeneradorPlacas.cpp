@@ -52,19 +52,52 @@ int GeneradorPlacas::generarCelda()
 /* Genera mensaje completo */
 string GeneradorPlacas::generarMensaje()
 {
-    string placa = generarPlaca();
+    string placa;
+
+    /* Generar repetición ocasional */
+    if (!placasActivas.empty() && rand() % 2 == 0)
+    {
+        auto it = placasActivas.begin();
+
+        advance(it, rand() % placasActivas.size());
+
+        placa = it->first;
+    }
+    else
+    {
+        placa = generarPlaca();
+    }
 
     string hora = obtenerHora();
 
-    int celda = generarCelda();
-
     stringstream mensaje;
 
-    mensaje << placa
-             << " | "
-             << hora
-             << " | Celda "
-             << celda;
+    /* Validar si la placa ya existe */
+    if (placasActivas.count(placa))
+    {
+        int celda = placasActivas[placa];
+
+        mensaje << placa
+                 << " | SALIDA | "
+                 << hora
+                 << " | Celda "
+                 << celda;
+
+        /* Liberar celda */
+        placasActivas.erase(placa);
+    }
+    else
+    {
+        int celda = generarCelda();
+
+        placasActivas[placa] = celda;
+
+        mensaje << placa
+                 << " | ENTRADA | "
+                 << hora
+                 << " | Celda "
+                 << celda;
+    }
 
     return mensaje.str();
 }

@@ -2,6 +2,7 @@
 #define GENERADOR_PLACAS_H
 
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -11,6 +12,11 @@ using namespace std;
 */
 class GeneradorPlacas
 {
+    private:
+
+        /* Placas dentro del parqueadero */
+        map<string, int> placasActivas;
+
     public:
 
         /* Genera una placa */
@@ -22,7 +28,7 @@ class GeneradorPlacas
         /* Genera celda */
         int generarCelda();
 
-        /* Genera mensaje completo */
+        /* Genera mensaje */
         string generarMensaje();
 };
 
