@@ -5,6 +5,8 @@
 
 #include "ServidorSocket.h"
 
+#include <cstring>
+
 using namespace std;
 
 /* Constructor */
@@ -59,3 +61,36 @@ void ServidorSocket::iniciarServidor()
 
 }
 
+/* Espera conexiones de clientes */
+void ServidorSocket::esperarCliente()
+{
+    sockaddr_in cliente;
+    int tamCliente = sizeof(cliente);
+
+    /* Esperar cliente */
+    cliente_fd = accept(
+        servidor_fd,
+        (struct sockaddr*)&cliente,
+        &tamCliente
+    );
+
+    /* Validar conexión */
+    if (cliente_fd == INVALID_SOCKET)
+    {
+        cout << "Error al aceptar cliente" << endl;
+        return;
+    }
+
+    cout << "Cliente conectado correctamente" << endl;
+}
+
+/* Envía mensaje al cliente */
+void ServidorSocket::enviarMensaje(const char* mensaje)
+{
+    send(cliente_fd,
+         mensaje,
+         strlen(mensaje),
+         0);
+
+    cout << "Mensaje enviado" << endl;
+}

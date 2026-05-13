@@ -17,6 +17,9 @@ class ServidorSocket
         /* Socket principal */
         SOCKET servidor_fd;
 
+        /* Socket del cliente */
+        SOCKET cliente_fd;
+
     public:
 
         /* Constructor */
@@ -24,6 +27,12 @@ class ServidorSocket
 
         /* Inicia el servidor */
         void iniciarServidor();
+
+        /* Espera conexiones */
+        void esperarCliente();
+
+        /* Envía mensaje al cliente */
+        void enviarMensaje(const char* mensaje);
 };
 
 #endif
