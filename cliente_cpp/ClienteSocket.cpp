@@ -49,3 +49,23 @@ void ClienteSocket::conectar()
 
     cout << "Conexion exitosa al servidor" << endl;
 }
+
+/* Recibe mensajes */
+void ClienteSocket::recibirMensaje()
+{
+    char buffer[1024];
+
+    /* Recibir mensaje */
+    int bytesRecibidos = recv(
+        cliente_fd,
+        buffer,
+        sizeof(buffer) - 1,
+        0
+    );
+
+    /* Finalizar cadena */
+    buffer[bytesRecibidos] = '\0';
+
+    cout << "Mensaje recibido: "
+        << buffer << endl;
+}

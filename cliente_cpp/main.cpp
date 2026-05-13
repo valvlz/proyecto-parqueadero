@@ -11,5 +11,8 @@ int main()
     /* Conectar al servidor */
     cliente.conectar();
 
+    /* Recibir mensaje */
+    cliente.recibirMensaje();
+
     return 0;
 }

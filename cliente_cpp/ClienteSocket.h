@@ -27,6 +27,9 @@ class ClienteSocket
 
         /* Conecta al servidor */
         void conectar();
+
+        /* Recibe mensajes */
+        void recibirMensaje();
 };
 
 #endif
