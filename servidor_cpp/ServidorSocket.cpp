@@ -51,4 +51,11 @@ void ServidorSocket::iniciarServidor()
     }
 
     cout << "Puerto asociado correctamente" << endl;
+
+    /* Escuchar conexiones */
+    listen(servidor_fd, 3);
+
+    cout << "Servidor escuchando conexiones..." << endl;    
+
 }
+
