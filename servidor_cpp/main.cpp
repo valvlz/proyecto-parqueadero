@@ -1,10 +1,15 @@
-#include <iostream>
+#include "ServidorSocket.h"
 
-using namespace std;
-
+/*
+    Punto de inicio del servidor
+*/
 int main()
 {
-    cout << "Servidor iniciado" << endl;
+    /* Crea servidor en puerto 8080 */
+    ServidorSocket servidor(8080);
+
+    /* Inicia el servidor */
+    servidor.iniciarServidor();
 
     return 0;
 }
