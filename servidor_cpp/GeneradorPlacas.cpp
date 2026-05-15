@@ -66,7 +66,8 @@ string GeneradorPlacas::generarMensaje()
     string placa;
 
     /* Generar repetición ocasional */
-    if (!placasActivas.empty() && rand() % 2 == 0)
+    /* if (!placasActivas.empty() && rand() % 2 == 0) */
+    if (!placasActivas.empty() && rand() % 5 == 0)
     {
         auto it = placasActivas.begin();
 
@@ -76,6 +77,12 @@ string GeneradorPlacas::generarMensaje()
     }
     else
     {
+        /* Validar capacidad */
+        if (celdasOcupadas.size() >= 10)
+        {
+            return "PARQUEADERO_LLENO";
+        }
+
         placa = generarPlaca();
     }
 
