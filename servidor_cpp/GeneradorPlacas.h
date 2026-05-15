@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 
+#include <set>
+
 using namespace std;
 
 /*
@@ -16,6 +18,10 @@ class GeneradorPlacas
 
         /* Placas dentro del parqueadero */
         map<string, int> placasActivas;
+
+
+        /* Celdas ocupadas */
+        set<int> celdasOcupadas;
 
     public:
 

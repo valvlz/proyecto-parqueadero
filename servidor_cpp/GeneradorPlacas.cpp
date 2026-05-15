@@ -46,7 +46,18 @@ string GeneradorPlacas::obtenerHora()
 /* Genera número de celda */
 int GeneradorPlacas::generarCelda()
 {
-    return rand() % 10 + 1;
+    int celda;
+
+    do
+    {
+        celda = rand() % 10 + 1;
+    }
+    while (celdasOcupadas.count(celda));
+
+    /* Marcar celda ocupada */
+    celdasOcupadas.insert(celda);
+
+    return celda;
 }
 
 /* Genera mensaje completo */
@@ -84,6 +95,9 @@ string GeneradorPlacas::generarMensaje()
                  << celda;
 
         /* Liberar celda */
+        celdasOcupadas.erase(celda);
+        
+        /* Eliminar placa */
         placasActivas.erase(placa);
     }
     else
