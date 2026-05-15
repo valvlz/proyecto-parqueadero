@@ -89,9 +89,9 @@ string GeneradorPlacas::generarMensaje()
         int celda = placasActivas[placa];
 
         mensaje << placa
-                 << " | SALIDA | "
+                 << ",ENTRADA,"
                  << hora
-                 << " | Celda "
+                 << ","
                  << celda;
 
         /* Liberar celda */
@@ -107,9 +107,9 @@ string GeneradorPlacas::generarMensaje()
         placasActivas[placa] = celda;
 
         mensaje << placa
-                 << " | ENTRADA | "
+                 << ",SALIDA,"
                  << hora
-                 << " | Celda "
+                 << ","
                  << celda;
     }
 
