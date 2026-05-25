@@ -12,7 +12,10 @@ int main()
     cliente.conectar();
 
     /* Recibir mensaje */
-    cliente.recibirMensaje();
+    while (true)
+    {
+        cliente.recibirMensaje();
+    }
 
     return 0;
 }

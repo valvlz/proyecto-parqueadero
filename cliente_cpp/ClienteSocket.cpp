@@ -56,16 +56,23 @@ void ClienteSocket::recibirMensaje()
     char buffer[1024];
 
     /* Recibir mensaje */
-    int bytesRecibidos = recv(
-        cliente_fd,
-        buffer,
-        sizeof(buffer) - 1,
-        0
-    );
+int bytesRecibidos = recv(
+    cliente_fd,
+    buffer,
+    sizeof(buffer) - 1,
+    0
+);
 
-    /* Finalizar cadena */
-    buffer[bytesRecibidos] = '\0';
+/* Validar conexión */
+if (bytesRecibidos <= 0)
+{
+    cout << "Servidor desconectado" << endl;
+    return;
+}
 
-    cout << "Mensaje recibido: "
-        << buffer << endl;
+/* Finalizar cadena */
+buffer[bytesRecibidos] = '\0';
+
+cout << "Mensaje recibido: "
+     << buffer << endl;
 }

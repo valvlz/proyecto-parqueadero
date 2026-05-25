@@ -32,12 +32,16 @@ int main()
     {
         /* Generar mensaje */
         string mensaje = generador.generarMensaje();
+        mensaje += "\n";
         
         /* Validar capacidad */
         if (mensaje == "PARQUEADERO_LLENO")
         {
             cout << mensaje << endl;
-            break;
+
+            Sleep(5000);
+
+            continue;
         }
 
         cout << "Mensaje generado: "

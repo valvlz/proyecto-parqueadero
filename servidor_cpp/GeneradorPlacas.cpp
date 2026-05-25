@@ -67,7 +67,7 @@ string GeneradorPlacas::generarMensaje()
 
     /* Generar repetición ocasional */
     /* if (!placasActivas.empty() && rand() % 2 == 0) */
-    if (!placasActivas.empty() && rand() % 5 == 0)
+    if (!placasActivas.empty() && rand() % 2 == 0)
     {
         auto it = placasActivas.begin();
 
@@ -96,10 +96,10 @@ string GeneradorPlacas::generarMensaje()
         int celda = placasActivas[placa];
 
         mensaje << placa
-                 << ",ENTRADA,"
-                 << hora
-                 << ","
-                 << celda;
+                << ",SALIDA,"
+                << hora
+                << ","
+                << celda;
 
         /* Liberar celda */
         celdasOcupadas.erase(celda);
@@ -114,10 +114,10 @@ string GeneradorPlacas::generarMensaje()
         placasActivas[placa] = celda;
 
         mensaje << placa
-                 << ",SALIDA,"
-                 << hora
-                 << ","
-                 << celda;
+                << ",ENTRADA,"
+                << hora
+                << ","
+                << celda;
     }
 
     return mensaje.str();
